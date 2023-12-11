@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en" > <!-- test -->
+	<head ><!-- test -->
+		<meta charset="UTF-8" > <!-- test -->
+		<title >ARIA in HTML - Test Cases</title><!-- test -->
+	    <link rel="stylesheet" href="../results/styles.css">
+		<style type="text/css">
+			body{
+				font-size: 1em;
+			}
+			.roleTest {
+				border: 2px solid black;
+				width: 1em;
+				height: 1em;
+				margin: 5px;
+			}
+			.flex {
+				display: flex;
+				flex-wrap: wrap;
+				align-items: stretch;
+			}
+			.widgetDemo {
+				border: 1px solid #EEE;
+				margin: .5em;
+				padding: 5px;
+				flex: 1 0 0;
+				min-width: calc(300px - 1em);
+			}
+			.widgetDemo p {
+				color: #696969;
+				font-size: 1.125em;
+				padding: 0;
+				margin: .75em 0;
+			}
+			.testcase {
+				margin: 2em 0;
+			}
+			h3{
+				margin: .5em 0;
+				border: 0;
+				padding: 0;
+			}
+			h2 {font-size:2em}
+
+			[contenteditable] {
+				border: 1px solid;
+				padding: .125em;
+			}
+
+			.testcase > * {
+				border: 1px dotted;
+				padding: .25em;
+			}
+
+            #reset {
+                border: 3px dashed black;
+            }
+        </style>
+<!-- tests -->
+        <base >
+    </head>
+<body>
+
+        <header>
+            <h1>ARIA in HTML - test case for prohibiting use of <code>aria-multiline</code> for any input element</h1>
+            <p>last updated 10 December 2023</p>
+        </header>
+        <main>
+            <h2>Test scenarios</h2>
+    
+            <div class="flex">
+                <div class="widgetDemo">
+                    <p>Authors should not use the <code>aria-multiline</code> attribute on any input element since inpute elements are by definition one line only</p>
+    
+                    <p>This test case sets <code>aria-multiline="true"</code> to
+    
+                    <div class="testcase">
+                        <input type="button" aria-multiline="true" aria-label="test case button"></input>
+                        
+                        
+                        <input id="sample_check" type=checkbox aria-multiline="true" aria-label="sample checkbox"/>
+
+                        <div>
+                            <label for="Watson">Watson Radio Button</label>
+                            <input type="radio" id="Watson" value="watson" aria-multiline="true"/>
+                        </div>
+
+                        <div>
+                            <input type="range" id="rating" name="rating" min="0" max="10" aria-multiline="true"/>
+                            <label for="rating">Rating</label>
+                        </div>
+
+                        <div>
+                            <input type="reset" id="reset" value="Reset" aria-multiline="true"/>
+                            <label for="reset">Reset button (dashed) </label>
+                        </div>
+
+                        <input type="submit" value="Submit" aria-multiline="true"/>
+
+                        <!--text, search, url with a list attribute examples-->
+                        <div>
+                            <label for="composers">Composer List:</label>
+                            <input type="text" id="composers" list="composerslist" aria-multiline="true">
+                            <datalist id="composerslist">
+                                <option value="Mozart">Mozart</option>
+                                <option value="Britell">Britell</option>
+                                <option value="Puccini">Puccini</option>
+                            </datalist>
+                        </div>
+
+                        <div>
+                            <label for="composersearch">Search Composer List:</label>
+                            <input type="search" id="composersearch" list="composerslistsearch" aria-multiline="true">
+                            <datalist id="composerslistsearch">
+                                <option value="Mozart">Mozart</option>
+                                <option value="Britell">Britell</option>
+                                <option value="Puccini">Puccini</option>
+                            </datalist>
+                        </div>
+
+                        <div>
+                            <label for="phoneList">Phone List:</label>
+                            <input type="tel" id="phoneList" list="phoneNums" aria-multiline="true">
+                            <datalist id="phoneNums">
+                                <option value="867-5309"></option>
+                                <option value="281-330-8004"></option>
+                                <option value="1-877-KARS4KIDS"></option>
+                            </datalist>
+                        </div>
+
+                        <div>
+                            <label for="urlList">URL List:</label>
+                            <input type="url" id="urlList" list="urls" aria-multiline="true">
+                            <datalist id="urls">
+                                <option value="w3c.github.io"></option>
+                                <option value="www.w3.org"></option>
+                            </datalist>
+                        </div>
+
+                        <div>
+                            <label for="emailList">Email List:</label>
+                            <input type="email" id="emailList" list="emails" aria-multiline="true">
+                            <datalist id="emails">
+                                <option value="w@w3.org"></option>
+                            </datalist>
+                        </div>
+
+                        <!-- doesn't fail so maybe these should be the accepted values -->
+                        <input type="color" aria-multiline="true" value="#000000" aria-label="sample color input"/>
+                        
+                        <input type="date" aria-multiline="true" aria-label="sample date"/>
+
+                        <input type="datetime-local" aria-multiline="true" aria-label="sample date time"/>
+
+                        <input type="email" aria-multiline="true" aria-label="sample email"/>
+
+                        <input type="file" aria-multiline="true" aria-label="sample file"/>
+
+                        <input type="month" aria-multiline="true" min="2018-03" value="2018-05"  aria-label="sample month" />
+
+                        <label for="grad">Number of days until Graduation (10-100):</label> <input type="number" id="grad" min="10" max="100" />
+                       
+                        <label for="pwd">Password (12 characters minimum):</label>
+                        <input type="password" id="pwd" minlength="12" aria-multiline="true" />
+
+                        <div>
+                            <label for="search">Search the page:</label>
+                            <input type="search" id="search" aria-multiline="true" />
+                        </div>
+
+                        <div>
+                            <label for="phone">Phone number:</label>
+                            <input type="tel" id="phone" name="phone" aria-multiline="true" />                          
+                        </div>
+
+                        <div>
+                            <label for="gen_text">Generic textbox:</label>
+                            <input type="text" id="gen_text" aria-multiline="true" />
+                        </div>
+
+                        <div>
+                            <label for="timePicker">Choose a time:</label>
+                            <input type="time" id="timePicker" name="timePicker" min="00:00" max="24:00" aria-multiline="true" />
+                        </div>
+
+                        <div>
+                            <label for="url">Enter URL:</label>
+                            <input type="url" name="url" id="url"  aria-multiline="true"/>
+                        </div>
+
+                        <div>
+                            <label for="holiday-week">Choose a week in for holiday vacation in December:</label>
+                            <input type="week" name="week" id="holiday-week" min="2023-W50" max="2023-W52" required />
+                        </div>
+                        
+                    </div>
+    
+                    <p><strong>Expected result:</strong>
+                    <br>Aria allowed attribute error for use of <code>aria-multiline="true"</code> on any element in this test case.</p>
+                </div>
+            </div>
+        </main>
+    </body>
+    </html>
