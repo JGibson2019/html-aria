@@ -72,13 +72,13 @@
                 <div class="widgetDemo">
                     <p>Authors should not use the <code>aria-multiline</code> attribute on any input element since inpute elements are by definition one line only</p>
     
-                    <p>This test case sets <code>aria-multiline="true"</code> to
+                    <p>These test cases set <code>aria-multiline="true"</code> on input elements that allow for text input </p>
     
                     <div class="testcase">                        
-
+                        <p>These scenarios are currently failing</p>
                         <!--text, search, url with a list attribute examples-->
                         <div>
-                            <label for="composers">Composer List:</label>
+                            <label for="composers">text input with datalist:</label>
                             <input type="text" id="composers" list="composerslist" aria-multiline="true">
                             <datalist id="composerslist">
                                 <option value="Mozart">Mozart</option>
@@ -88,7 +88,7 @@
                         </div>
 
                         <div>
-                            <label for="composersearch">Search Composer List:</label>
+                            <label for="composersearch">search input with datalist:</label>
                             <input type="search" id="composersearch" list="composerslistsearch" aria-multiline="true">
                             <datalist id="composerslistsearch">
                                 <option value="Mozart">Mozart</option>
@@ -98,7 +98,7 @@
                         </div>
 
                         <div>
-                            <label for="phoneList">Phone List:</label>
+                            <label for="phoneList">phone input with datalist:</label>
                             <input type="tel" id="phoneList" list="phoneNums" aria-multiline="true">
                             <datalist id="phoneNums">
                                 <option value="867-5309"></option>
@@ -108,7 +108,7 @@
                         </div>
 
                         <div>
-                            <label for="urlList">URL List:</label>
+                            <label for="urlList">url input with datalist</label>
                             <input type="url" id="urlList" list="urls" aria-multiline="true">
                             <datalist id="urls">
                                 <option value="w3c.github.io"></option>
@@ -117,7 +117,7 @@
                         </div>
 
                         <div>
-                            <label for="emailList">Email List:</label>
+                            <label for="emailList">email input with datalist:</label>
                             <input type="email" id="emailList" list="emails" aria-multiline="true">
                             <datalist id="emails">
                                 <option value="w@w3.org"></option>
@@ -125,57 +125,72 @@
                         </div>
 
                         <!-- doesn't fail so maybe these should be the accepted values -->
-                        <input type="color" aria-multiline="true" value="#000000" aria-label="sample color input"/>
-                        
-                        <input type="date" aria-multiline="true" aria-label="sample date"/>
-
-                        <input type="datetime-local" aria-multiline="true" aria-label="sample date time"/>
-
-                        <input type="email" aria-multiline="true" aria-label="sample email"/>
-
-                        <input type="file" aria-multiline="true" aria-label="sample file"/>
-
-                        <input type="month" aria-multiline="true" min="2018-03" value="2018-05"  aria-label="sample month" />
-
-                        <label for="grad">Number of days until Graduation (10-100):</label> <input type="number" id="grad" min="10" max="100" />
-                       
-                        <label for="pwd">Password (12 characters minimum):</label>
-                        <input type="password" id="pwd" minlength="12" aria-multiline="true" />
+                        <p>Scenarios that are not currently failing consistently</p>
 
                         <div>
-                            <label for="search">Search the page:</label>
+                            <label for="sampledate">type="date"</label>
+                            <input type="date" aria-multiline="true" aria-label="sample date"/>
+                        </div>
+
+                        <div>
+                            <label for="datetime">type="datetime-local</label>
+                            <input type="datetime-local" aria-multiline="true" aria-label="sample date time"/>
+                        </div>
+
+                        <div>
+                            <label for="email">type="email"</label>
+                            <input type="email" aria-multiline="true" aria-label="sample email"/>
+                        </div>
+
+                        <div>
+                            <label for="month">type="month"</label> 
+                            <input id="month" type="month" aria-multiline="true" min="2018-03" value="2018-05"  />
+                        </div>
+
+                        <div>
+                            <label for="grad">type="number"</label> 
+                            <input type="number" id="grad" min="10" max="100" />
+                        </div>
+
+                        <div>
+                            <label for="pwd">type="password"</label>
+                            <input type="password" id="pwd" minlength="12" aria-multiline="true" />
+                        </div>
+
+                        <div>
+                            <label for="search">type="search"</label>
                             <input type="search" id="search" aria-multiline="true" />
                         </div>
 
                         <div>
-                            <label for="phone">Phone number:</label>
+                            <label for="phone">type="tel"</label>
                             <input type="tel" id="phone" name="phone" aria-multiline="true" />                          
                         </div>
 
                         <div>
-                            <label for="gen_text">Generic textbox:</label>
+                            <label for="gen_text">type="text"</label>
                             <input type="text" id="gen_text" aria-multiline="true" />
                         </div>
 
                         <div>
-                            <label for="timePicker">Choose a time:</label>
+                            <label for="timePicker">type="timepicker"</label>
                             <input type="time" id="timePicker" name="timePicker" min="00:00" max="24:00" aria-multiline="true" />
                         </div>
 
                         <div>
-                            <label for="url">Enter URL:</label>
+                            <label for="url">type="url"</label>
                             <input type="url" name="url" id="url"  aria-multiline="true"/>
                         </div>
 
                         <div>
-                            <label for="holiday-week">Choose a week in for holiday vacation in December:</label>
+                            <label for="holiday-week">type="week"</label>
                             <input type="week" name="week" id="holiday-week" min="2023-W50" max="2023-W52" required />
                         </div>
                         
                     </div>
     
                     <p><strong>Expected result:</strong>
-                    <br>Aria allowed attribute error for use of <code>aria-multiline="true"</code> on any element in this test case.</p>
+                    <br>Checkers must return an error for using <code>aria-multiline="true"</code> on any of the input elements listed in this test case.</p>
                 </div>
             </div>
         </main>
